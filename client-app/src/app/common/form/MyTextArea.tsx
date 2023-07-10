@@ -7,6 +7,7 @@ interface Props {
     name: string;
     rows: number;
     label?: string;
+    type?: string;
 }
 
 export default function MyTextAreaInput(props: Props) {

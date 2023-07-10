@@ -3,21 +3,20 @@ import { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
-import ActivityList from './ActivityList';
 import ActivityFilters from "./ActivityFilters";
+import ActivityList from './ActivityList';
 
 export default observer(function ActivityDashboard() {
-    const {activityStore} = useStore();
-    const {loadActivities, activityRegistry} = activityStore;
+    const { activityStore } = useStore();
+    const { loadActivities, activityRegistry } = activityStore;
 
     useEffect(() => {
         if (activityRegistry.size <= 1) loadActivities();
-    }, [activityRegistry.size , loadActivities])
-  
-    if (activityStore.loadingInitial) return <LoadingComponent content='Loading app...' />
-    
+    }, [loadActivities, activityRegistry.size])
+
+    if (activityStore.loadingInitial) return <LoadingComponent content='Loading activitities...' />
+
     return (
-        
         <Grid>
             <Grid.Column width='10'>
                 <ActivityList />
