@@ -39,6 +39,7 @@ export default class UserStore {
         }
     }
 
+
     logout = () => {
         store.commonStore.setToken(null);
         this.user = null;
@@ -52,5 +53,13 @@ export default class UserStore {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    setImage = (image: string) => {
+        if (this.user) this.user.image = image;
+    }
+
+    setUserPhoto = (url: string) => {
+        if (this.user) this.user.image = url;
     }
 }
